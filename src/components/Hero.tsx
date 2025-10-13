@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Building2, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-construction.jpg";
+import falconLogo from "@/assets/falcon-logo.jpg";
 
 export const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -20,14 +21,21 @@ export const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20 text-center">
-        <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm border border-primary/20 rounded-full px-6 py-2 mb-8 animate-fade-in">
-          <Building2 className="h-5 w-5 text-primary" />
-          <span className="text-sm font-medium text-primary-foreground">Civil Contractors • Chiplun, Ratnagiri</span>
+        <div className="flex justify-center mb-8 animate-fade-in">
+          <img 
+            src={falconLogo} 
+            alt="Falcon Engineers Logo" 
+            className="h-24 w-24 md:h-32 md:w-32 object-contain bg-white rounded-full p-2 shadow-strong"
+          />
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up">
-          Falcon Engineering
+          Falcon Engineers
         </h1>
+        
+        <p className="text-lg text-primary-foreground/90 mb-6 animate-fade-in-up animation-delay-100">
+          Civil Contractors • Chiplun, Ratnagiri
+        </p>
         
         <p className="text-xl md:text-2xl text-primary-foreground/90 mb-4 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
           Building Dreams with Precision & Excellence

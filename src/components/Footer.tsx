@@ -1,4 +1,4 @@
-import { Building2 } from "lucide-react";
+import falconLogo from "@/assets/falcon-logo.jpg";
 
 export const Footer = () => {
   return (
@@ -6,9 +6,13 @@ export const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Building2 className="h-6 w-6 text-primary" />
-              <span className="font-bold text-lg">Falcon Engineering</span>
+            <div className="flex items-center gap-3 mb-4">
+              <img 
+                src={falconLogo} 
+                alt="Falcon Engineers Logo" 
+                className="h-12 w-12 object-contain bg-white rounded-full p-1"
+              />
+              <span className="font-bold text-lg">Falcon Engineers</span>
             </div>
             <p className="text-sm text-secondary-foreground/80">
               Building excellence in construction since years. Your trusted partner for all civil engineering needs.
@@ -51,7 +55,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-secondary-foreground/10 pt-8 text-center text-sm text-secondary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} Falcon Engineering. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Falcon Engineers. All rights reserved.</p>
         </div>
       </div>
     </footer>
