@@ -28,7 +28,10 @@ export const Contact = () => {
         body: data,
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error("Edge function error:", error);
+        throw error;
+      }
 
       toast({
         title: "Message sent!",
