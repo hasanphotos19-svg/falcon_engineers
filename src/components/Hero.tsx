@@ -16,7 +16,7 @@ export const Hero = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/80 to-secondary/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background/90" />
       </div>
 
       {/* Content */}
@@ -29,19 +29,19 @@ export const Hero = () => {
           />
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up">
+        <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 animate-fade-in-up">
           Falcon Engineers
         </h1>
         
-        <p className="text-lg text-primary-foreground/90 mb-6 animate-fade-in-up animation-delay-100">
+        <p className="text-lg text-foreground/80 mb-6 animate-fade-in-up animation-delay-100">
           Civil Contractors • Chiplun, Ratnagiri
         </p>
         
-        <p className="text-xl md:text-2xl text-primary-foreground/90 mb-4 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
+        <p className="text-xl md:text-2xl text-foreground/85 mb-4 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
           Building Dreams with Precision & Excellence
         </p>
         
-        <p className="text-lg text-primary-foreground/80 mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
+        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
           Leading construction firm specializing in residential, commercial, and civil engineering projects across Maharashtra
         </p>
 
@@ -58,7 +58,7 @@ export const Hero = () => {
             size="lg" 
             variant="outline"
             onClick={() => scrollToSection("projects")}
-            className="bg-primary-foreground/10 backdrop-blur-sm border-primary-foreground/20 hover:bg-primary-foreground/20 text-primary-foreground text-lg px-8"
+            className="border-primary hover:bg-primary/10 text-foreground text-lg px-8"
           >
             View Projects
           </Button>
@@ -67,8 +67,8 @@ export const Hero = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-primary-foreground/50 rounded-full" />
+        <div className="w-6 h-10 border-2 border-primary/40 rounded-full flex items-start justify-center p-2">
+          <div className="w-1.5 h-3 bg-primary rounded-full" />
         </div>
       </div>
     </section>
