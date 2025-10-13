@@ -3,8 +3,51 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Instagram } from "lucide-react";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 export const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      project: formData.get("message") as string,
+    };
+
+    try {
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: data,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -21,15 +64,17 @@ export const Contact = () => {
           {/* Contact Form */}
           <Card className="border-border/50">
             <CardContent className="p-6 md:p-8">
-              <form className="space-y-4 md:space-y-6">
+              <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
                     Full Name
                   </label>
                   <Input 
-                    id="name" 
+                    id="name"
+                    name="name"
                     placeholder="Enter your name"
                     className="w-full"
+                    required
                   />
                 </div>
                 <div>
@@ -37,10 +82,12 @@ export const Contact = () => {
                     Email Address
                   </label>
                   <Input 
-                    id="email" 
+                    id="email"
+                    name="email"
                     type="email"
                     placeholder="your@email.com"
                     className="w-full"
+                    required
                   />
                 </div>
                 <div>
@@ -48,10 +95,12 @@ export const Contact = () => {
                     Phone Number
                   </label>
                   <Input 
-                    id="phone" 
+                    id="phone"
+                    name="phone"
                     type="tel"
                     placeholder="+91 XXXXX XXXXX"
                     className="w-full"
+                    required
                   />
                 </div>
                 <div>
@@ -59,17 +108,20 @@ export const Contact = () => {
                     Project Details
                   </label>
                   <Textarea 
-                    id="message" 
+                    id="message"
+                    name="message"
                     placeholder="Tell us about your project..."
                     className="w-full min-h-32"
+                    required
                   />
                 </div>
                 <Button 
                   type="submit" 
                   className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
                   size="lg"
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>
