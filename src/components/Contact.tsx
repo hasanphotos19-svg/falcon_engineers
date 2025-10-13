@@ -6,22 +6,22 @@ import { MapPin, Phone, Mail, Instagram } from "lucide-react";
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section id="contact" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Get In Touch
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             Ready to start your project? Contact us today for a free consultation
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
           <Card className="border-border/50">
-            <CardContent className="p-8">
-              <form className="space-y-6">
+            <CardContent className="p-6 md:p-8">
+              <form className="space-y-4 md:space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
                     Full Name
@@ -87,8 +87,10 @@ export const Contact = () => {
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-foreground mb-1">Location</h4>
-                    <p className="text-muted-foreground">
+                    <h4 className="font-medium text-foreground mb-1">Office Address</h4>
+                    <p className="text-muted-foreground text-sm md:text-base">
+                      205, Taha Heights<br />
+                      Beside Prant Office<br />
                       Chiplun, Ratnagiri<br />
                       Maharashtra, India
                     </p>
