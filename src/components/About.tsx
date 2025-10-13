@@ -1,12 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Award, Users, Clock, CheckCircle, User } from "lucide-react";
-
-const stats = [
-  { icon: Award, label: "Years of Excellence", value: "10+" },
-  { icon: Users, label: "Projects Completed", value: "100+" },
-  { icon: Clock, label: "On-Time Delivery", value: "98%" },
-  { icon: CheckCircle, label: "Client Satisfaction", value: "100%" }
-];
+import { User } from "lucide-react";
 
 export const About = () => {
   return (
@@ -46,24 +39,6 @@ export const About = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {stats.map((stat, index) => (
-            <Card key={index} className="border-border/50 hover:shadow-elevated transition-all">
-              <CardContent className="p-4 md:p-6 text-center">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3 md:mb-4">
-                  <stat.icon className="h-5 w-5 md:h-6 md:w-6 text-primary" />
-                </div>
-                <div className="text-2xl md:text-3xl font-bold text-primary mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-xs md:text-sm text-muted-foreground">
-                  {stat.label}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
         </div>
       </div>
     </section>
