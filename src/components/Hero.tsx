@@ -16,7 +16,16 @@ export const Hero = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background/90" />
+        {/* Dark base overlay */}
+        <div className="absolute inset-0 bg-black/80" />
+        
+        {/* Light beam from top left */}
+        <div 
+          className="absolute inset-0" 
+          style={{
+            background: 'radial-gradient(ellipse 1200px 1000px at 0% 0%, hsl(45 100% 60% / 0.35) 0%, hsl(45 80% 50% / 0.2) 20%, transparent 50%)'
+          }}
+        />
       </div>
 
       {/* Content */}
@@ -29,19 +38,19 @@ export const Hero = () => {
           />
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 animate-fade-in-up">
+        <h1 className="text-5xl md:text-7xl font-bold text-primary mb-6 animate-fade-in-up drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
           Falcon Engineers
         </h1>
         
-        <p className="text-lg text-foreground/80 mb-6 animate-fade-in-up animation-delay-100">
+        <p className="text-lg text-primary/90 mb-6 animate-fade-in-up animation-delay-100">
           Civil Contractors • Chiplun, Ratnagiri
         </p>
         
-        <p className="text-xl md:text-2xl text-foreground/85 mb-4 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
+        <p className="text-xl md:text-2xl text-white/95 mb-4 max-w-3xl mx-auto animate-fade-in-up animation-delay-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
           Building Dreams with Precision & Excellence
         </p>
         
-        <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
+        <p className="text-lg text-white/80 mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
           Leading construction firm specializing in residential, commercial, and civil engineering projects across Maharashtra
         </p>
 
@@ -58,7 +67,7 @@ export const Hero = () => {
             size="lg" 
             variant="outline"
             onClick={() => scrollToSection("projects")}
-            className="border-primary hover:bg-primary/10 text-foreground text-lg px-8"
+            className="border-primary/50 hover:bg-primary/20 hover:border-primary text-white text-lg px-8 backdrop-blur-sm"
           >
             View Projects
           </Button>
@@ -67,7 +76,7 @@ export const Hero = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary/40 rounded-full flex items-start justify-center p-2">
+        <div className="w-6 h-10 border-2 border-primary/60 rounded-full flex items-start justify-center p-2">
           <div className="w-1.5 h-3 bg-primary rounded-full" />
         </div>
       </div>
