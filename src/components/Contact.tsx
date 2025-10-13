@@ -103,9 +103,12 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium text-foreground mb-1">Phone</h4>
-                    <p className="text-muted-foreground">
-                      Available on request
-                    </p>
+                    <a 
+                      href="tel:+917517899103" 
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      +91 75178 99103
+                    </a>
                   </div>
                 </div>
 
