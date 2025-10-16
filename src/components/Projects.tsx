@@ -138,13 +138,13 @@ export const Projects = () => {
             <CarouselContent>
               {projects.map((project) => (
                 <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="group overflow-hidden hover:shadow-strong transition-all duration-300">
+                  <Card className="group overflow-hidden hover:shadow-strong transition-all duration-300 h-full flex flex-col">
                     {project.images.length > 1 ? (
-                      <div className="grid grid-cols-2 gap-2 p-2">
+                      <div className="grid grid-cols-2 gap-2 p-2 h-64">
                         {project.images.map((image, imgIndex) => (
                           <div 
                             key={imgIndex}
-                            className="relative h-48 overflow-hidden rounded-lg cursor-pointer"
+                            className="relative overflow-hidden rounded-lg cursor-pointer"
                             onClick={() => handleProjectClick(project, imgIndex)}
                           >
                             <img 
@@ -169,7 +169,7 @@ export const Projects = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
                     )}
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 flex-1">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                           {project.title}
