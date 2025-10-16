@@ -15,6 +15,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
+import residentialImage from "@/assets/project-residential.jpg";
+import commercialImage from "@/assets/project-commercial.jpg";
+import planningImage from "@/assets/service-planning.jpg";
 import retainingWall1 from "@/assets/retaining-wall-1.jpg";
 import retainingWall2 from "@/assets/retaining-wall-2.jpg";
 import plumbing1 from "@/assets/plumbing-1.jpg";
@@ -37,6 +40,39 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: "Luxury Residential Complex",
+    category: "Residential",
+    description: "Modern residential development with premium amenities and contemporary design",
+    images: [residentialImage],
+    location: "Chiplun, Ratnagiri",
+    completionDate: "2024",
+    clientType: "Residential",
+    details: "A comprehensive residential development featuring modern architecture, premium materials, and state-of-the-art amenities. This project showcases our expertise in creating luxurious living spaces that combine aesthetic appeal with functional design, ensuring the highest quality standards throughout construction."
+  },
+  {
+    id: 2,
+    title: "Corporate Office Building",
+    category: "Commercial",
+    description: "State-of-the-art commercial space with sustainable design features",
+    images: [commercialImage],
+    location: "Chiplun, Ratnagiri",
+    completionDate: "2024",
+    clientType: "Commercial",
+    details: "A modern commercial building designed to meet the evolving needs of businesses. Featuring energy-efficient systems, contemporary interiors, and flexible workspace solutions. Our team delivered a project that balances functionality with visual appeal, creating an inspiring environment for professionals."
+  },
+  {
+    id: 3,
+    title: "Infrastructure Development",
+    category: "Civil Engineering",
+    description: "Comprehensive civil engineering and infrastructure projects",
+    images: [planningImage],
+    location: "Chiplun, Ratnagiri",
+    completionDate: "2024",
+    clientType: "Government & Private",
+    details: "Large-scale infrastructure development demonstrating our civil engineering capabilities. This project involved detailed planning, precise execution, and adherence to strict quality standards. We successfully delivered complex infrastructure solutions that serve the community's long-term needs."
+  },
+  {
+    id: 4,
     title: "Retaining Wall Construction",
     category: "Structural",
     description: "Heavy-duty retaining wall systems for residential and commercial properties",
@@ -47,7 +83,7 @@ const projects: Project[] = [
     details: "Expert construction of durable retaining walls designed to prevent soil erosion and create level areas on sloped properties. Our retaining walls are engineered to withstand environmental pressures while enhancing property aesthetics. We use premium materials and proven construction techniques to ensure long-lasting stability and structural integrity."
   },
   {
-    id: 2,
+    id: 5,
     title: "Professional Plumbing Services",
     category: "Infrastructure",
     description: "Complete plumbing solutions for new constructions and renovations",
@@ -58,7 +94,7 @@ const projects: Project[] = [
     details: "Comprehensive plumbing installation and maintenance services including water supply systems, drainage solutions, and sewage management. Our certified plumbers ensure code-compliant installations with quality materials and fixtures. We specialize in both residential and commercial projects, delivering reliable plumbing infrastructure that stands the test of time."
   },
   {
-    id: 3,
+    id: 6,
     title: "Premium Tile Work",
     category: "Finishing",
     description: "High-quality tile installation for floors, walls, and decorative surfaces",
@@ -103,22 +139,36 @@ export const Projects = () => {
               {projects.map((project) => (
                 <CarouselItem key={project.id} className="md:basis-1/2 lg:basis-1/3">
                   <Card className="group overflow-hidden hover:shadow-strong transition-all duration-300">
-                    <div className="grid grid-cols-2 gap-2 p-2">
-                      {project.images.map((image, imgIndex) => (
-                        <div 
-                          key={imgIndex}
-                          className="relative h-48 overflow-hidden rounded-lg cursor-pointer"
-                          onClick={() => handleProjectClick(project, imgIndex)}
-                        >
-                          <img 
-                            src={image} 
-                            alt={`${project.title} - Image ${imgIndex + 1}`}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </div>
-                      ))}
-                    </div>
+                    {project.images.length > 1 ? (
+                      <div className="grid grid-cols-2 gap-2 p-2">
+                        {project.images.map((image, imgIndex) => (
+                          <div 
+                            key={imgIndex}
+                            className="relative h-48 overflow-hidden rounded-lg cursor-pointer"
+                            onClick={() => handleProjectClick(project, imgIndex)}
+                          >
+                            <img 
+                              src={image} 
+                              alt={`${project.title} - Image ${imgIndex + 1}`}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div 
+                        className="relative h-64 overflow-hidden cursor-pointer"
+                        onClick={() => handleProjectClick(project, 0)}
+                      >
+                        <img 
+                          src={project.images[0]} 
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    )}
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
