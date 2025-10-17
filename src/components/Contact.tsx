@@ -54,8 +54,10 @@ export const Contact = () => {
   return (
     <section id="contact" className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4 max-w-4xl">
-        {/* Contact Information */}
-        <div className="space-y-8">
+        <Card className="border-border/50">
+          <CardContent className="p-6 md:p-8">
+            {/* Contact Information */}
+            <div className="space-y-8">
           <div>
             <h3 className="text-2xl font-semibold mb-6 text-foreground">
               Contact Information
@@ -131,7 +133,9 @@ export const Contact = () => {
               </div>
             </CardContent>
           </Card>
-        </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
