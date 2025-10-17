@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Building2, Lightbulb, MapPin, Calendar, CheckCircle2, ExternalLink } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Building2, Lightbulb, MapPin, Calendar, CheckCircle2, ExternalLink, Maximize2, X } from "lucide-react";
 
 type ProjectCategory = "construction" | "consulting";
 
@@ -188,6 +189,7 @@ const projectsData: TimelineProject[] = [
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("construction");
   const [selectedProject, setSelectedProject] = useState<TimelineProject | null>(null);
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
 
   const filteredProjects = projectsData.filter(p => p.category === selectedCategory);
 
@@ -291,17 +293,32 @@ export default function ProjectsPage() {
                 </DialogHeader>
 
                 <div className="space-y-6 mt-6">
-                  {/* Image Gallery */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {selectedProject.images.map((image, index) => (
-                      <div key={index} className="relative h-64 overflow-hidden rounded-lg">
-                        <img 
-                          src={image} 
-                          alt={`${selectedProject.title} - ${index + 1}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform"
-                        />
-                      </div>
-                    ))}
+                  {/* Image Carousel */}
+                  <div className="relative">
+                    <Carousel className="w-full">
+                      <CarouselContent>
+                        {selectedProject.images.map((image, index) => (
+                          <CarouselItem key={index}>
+                            <div className="relative h-96 overflow-hidden rounded-lg group">
+                              <img 
+                                src={image} 
+                                alt={`${selectedProject.title} - ${index + 1}`}
+                                className="w-full h-full object-cover"
+                              />
+                              {/* Fullscreen button overlay */}
+                              <button
+                                onClick={() => setFullscreenImage(image)}
+                                className="absolute top-4 right-4 p-2 bg-background/80 backdrop-blur-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+                              >
+                                <Maximize2 className="h-5 w-5" />
+                              </button>
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-4" />
+                      <CarouselNext className="right-4" />
+                    </Carousel>
                   </div>
 
                   {/* Project Info Grid */}
@@ -392,6 +409,27 @@ export default function ProjectsPage() {
                   </div>
                 </div>
               </>
+            )}
+          </DialogContent>
+        </Dialog>
+
+        {/* Fullscreen Image Viewer */}
+        <Dialog open={!!fullscreenImage} onOpenChange={(open) => !open && setFullscreenImage(null)}>
+          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/95">
+            <button
+              onClick={() => setFullscreenImage(null)}
+              className="absolute top-4 right-4 z-50 p-2 bg-background/20 hover:bg-background/40 rounded-lg transition-colors"
+            >
+              <X className="h-6 w-6 text-white" />
+            </button>
+            {fullscreenImage && (
+              <div className="w-full h-full flex items-center justify-center p-4">
+                <img 
+                  src={fullscreenImage} 
+                  alt="Fullscreen view"
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
             )}
           </DialogContent>
         </Dialog>
