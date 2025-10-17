@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Building2, Lightbulb, MapPin, Calendar, CheckCircle2 } from "lucide-react";
+import { Building2, Lightbulb, MapPin, Calendar, CheckCircle2, ExternalLink } from "lucide-react";
 
 type ProjectCategory = "construction" | "consulting";
 
@@ -26,6 +26,7 @@ interface TimelineProject {
   projectValue: string;
   keyFeatures: string[];
   teamSize: number;
+  driveLink: string;
 }
 
 const projectsData: TimelineProject[] = [
@@ -45,7 +46,8 @@ const projectsData: TimelineProject[] = [
     clientName: "Municipal Corporation",
     projectValue: "₹5.2 Crore",
     keyFeatures: ["Smart traffic management", "Underground utilities", "Pedestrian infrastructure", "LED street lighting"],
-    teamSize: 25
+    teamSize: 25,
+    driveLink: "https://drive.google.com/drive/folders/1A2B3C4D5E6F7G8H9I0J"
   },
   {
     id: 2,
@@ -62,7 +64,8 @@ const projectsData: TimelineProject[] = [
     clientName: "Green Tech Developers",
     projectValue: "₹85 Lakhs",
     keyFeatures: ["LEED certification support", "Energy audit", "Sustainability planning", "Compliance documentation"],
-    teamSize: 5
+    teamSize: 5,
+    driveLink: "https://drive.google.com/drive/folders/2K3L4M5N6O7P8Q9R0S1T"
   },
   // 2024 Projects
   {
@@ -81,7 +84,8 @@ const projectsData: TimelineProject[] = [
     clientName: "Skyline Developers",
     projectValue: "₹3.8 Crore",
     keyFeatures: ["24 luxury apartments", "Swimming pool", "Gym & clubhouse", "Landscaped gardens"],
-    teamSize: 18
+    teamSize: 18,
+    driveLink: "https://drive.google.com/drive/folders/3U4V5W6X7Y8Z9A0B1C2D"
   },
   {
     id: 4,
@@ -99,7 +103,8 @@ const projectsData: TimelineProject[] = [
     clientName: "TechCorp Solutions",
     projectValue: "₹4.5 Crore",
     keyFeatures: ["5-story building", "Central AC", "Solar panels", "Modern workspaces"],
-    teamSize: 22
+    teamSize: 22,
+    driveLink: "https://drive.google.com/drive/folders/4E5F6G7H8I9J0K1L2M3N"
   },
   {
     id: 5,
@@ -117,7 +122,8 @@ const projectsData: TimelineProject[] = [
     clientName: "Heritage Conservation Society",
     projectValue: "₹45 Lakhs",
     keyFeatures: ["Structural integrity assessment", "Retrofitting design", "Heritage compliance", "Restoration planning"],
-    teamSize: 4
+    teamSize: 4,
+    driveLink: "https://drive.google.com/drive/folders/5O6P7Q8R9S0T1U2V3W4X"
   },
   {
     id: 6,
@@ -135,7 +141,8 @@ const projectsData: TimelineProject[] = [
     clientName: "Valley Estates",
     projectValue: "₹1.2 Crore",
     keyFeatures: ["200m retaining wall", "Drainage system", "Erosion control", "Landscaping integration"],
-    teamSize: 12
+    teamSize: 12,
+    driveLink: "https://drive.google.com/drive/folders/6Y7Z8A9B0C1D2E3F4G5H"
   },
   // 2023 Projects
   {
@@ -154,7 +161,8 @@ const projectsData: TimelineProject[] = [
     clientName: "Metro Planners Ltd",
     projectValue: "₹65 Lakhs",
     keyFeatures: ["Master plan development", "Zoning analysis", "Regulatory compliance", "Community consultation"],
-    teamSize: 6
+    teamSize: 6,
+    driveLink: "https://drive.google.com/drive/folders/7I8J9K0L1M2N3O4P5Q6R"
   },
   {
     id: 8,
@@ -172,7 +180,8 @@ const projectsData: TimelineProject[] = [
     clientName: "Luxury Homes Pvt Ltd",
     projectValue: "₹55 Lakhs",
     keyFeatures: ["Italian marble flooring", "Decorative wall tiles", "Bathroom finishing", "Kitchen backsplash"],
-    teamSize: 8
+    teamSize: 8,
+    driveLink: "https://drive.google.com/drive/folders/8S9T0U1V2W3X4Y5Z6A7B"
   }
 ];
 
@@ -362,6 +371,24 @@ export default function ProjectsPage() {
                         </div>
                       ))}
                     </div>
+                  </div>
+
+                  {/* Google Drive Link */}
+                  <div className="pt-4 border-t">
+                    <Button 
+                      asChild
+                      className="w-full gap-2"
+                      size="lg"
+                    >
+                      <a 
+                        href={selectedProject.driveLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="h-5 w-5" />
+                        View Project Files on Google Drive
+                      </a>
+                    </Button>
                   </div>
                 </div>
               </>
